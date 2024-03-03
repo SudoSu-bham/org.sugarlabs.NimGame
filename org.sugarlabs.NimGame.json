@@ -1,0 +1,71 @@
+{
+    "app-id": "org.sugarlabs.NimGame",
+    "base": "org.sugarlabs.BaseApp",
+    "base-version": "23.06",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "44",
+    "sdk": "org.gnome.Sdk",
+    "separate-locales": false,
+    "command": "sugarapp",
+    "finish-args": [
+        "--socket=x11",
+        "--socket=pulseaudio",
+        "--share=ipc",
+        "--device=dri",
+        "--env=SUGAR_BUNDLE_ID=org.sugarlabs.NimGame",
+        "--env=SUGAR_BUNDLE_PATH=/app/share/sugar/activities/NimGame.activity"
+    ],
+    "modules": [
+        {
+            "name": "pip",
+            "buildsystem": "simple",
+            "build-options": {
+                "build-args": [
+                  "--share=network"
+                ]
+            },
+            "build-commands": [
+                "pip install pygame --prefix=${FLATPAK_DEST}"
+            ]
+        },
+        {
+            "name": "nim-game",
+            "buildsystem": "simple",
+            "build-options": {
+                "build-args": [
+                  "--share=network"
+                ]
+            },
+            "build-commands": [
+                "python3 setup.py install --prefix=/app --skip-install-desktop-file --skip-install-mime"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/SudoSu-bham/NimGame.git",
+                    "branch": "master",
+                    "commit": "f34ceabc91ff620c61880398a7f27d56881d25b3"
+                },
+                {
+                    "type": "patch",
+                    "path": "nimgame-port.patch"
+                },
+                {
+                    "type": "patch",
+                    "path": "nimgame-info.patch"
+                }
+
+            ],
+            "post-install": [
+                "sugarapp-gen-mimetypes activity/activity.info mimetypes",
+                "sugarapp-gen-appdata activity/activity.info appdata",
+                "sugarapp-gen-desktop activity/activity.info desktop --mimetypes mimetypes",
+                "install -D mimetypes /app/share/mime/packages/org.sugarlabs.NimGame.xml",
+                "install -D mimetypes /app/share/sugar/activities/NimGame.activity/activity/mimetypes.xml",
+                "install -D appdata /app/share/metainfo/org.sugarlabs.NimGame.appdata.xml",
+                "install -D desktop /app/share/applications/org.sugarlabs.NimGame.desktop",
+                "install -D activity/activity-nimgame.svg /app/share/icons/hicolor/scalable/apps/org.sugarlabs.NimGame.svg"
+            ]
+        }
+    ]
+}
