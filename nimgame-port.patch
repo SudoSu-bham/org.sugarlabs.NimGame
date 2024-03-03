@@ -1,0 +1,36 @@
+diff --git a/Nimactivity.py b/Nimactivity.py
+index 5d5dddb..ecaee9c 100644
+--- a/Nimactivity.py
++++ b/Nimactivity.py
+@@ -28,17 +28,18 @@ import pygame
+ 
+ from sugar3.activity.activity import Activity
+ from sugar3.graphics.toolbarbox import ToolbarBox
+-from sugar3.activity.widgets import ActivityToolbarButton
+ from sugar3.activity.widgets import StopButton
+ 
++from sugarapp.widgets import SugarCompatibleActivity
++from sugarapp.widgets import ExtendedActivityToolbarButton
++
+ import sugargame.canvas
+ import NimGame
+ 
+ 
+-class Nimgame(Activity):
++class Nimgame(SugarCompatibleActivity):
+     def __init__(self, handle):
+-        Activity.__init__(self, handle)
+-
++        SugarCompatibleActivity.__init__(self, handle)
+         self.build_toolbar()
+         self.game = NimGame.NimGame()
+ 
+@@ -60,7 +61,7 @@ class Nimgame(Activity):
+         self.set_toolbar_box(toolbar_box)
+         toolbar_box.show()
+ 
+-        activity_button = ActivityToolbarButton(self)
++        activity_button = ExtendedActivityToolbarButton(self)
+         toolbar_box.toolbar.insert(activity_button, -1)
+         activity_button.show()
+ 
