@@ -1,12 +1,10 @@
 diff --git a/activity/activity.info b/activity/activity.info
-index b44f2aa..1a016b2 100644
+index b44f2aa..dc17061 100644
 --- a/activity/activity.info
 +++ b/activity/activity.info
-@@ -1,8 +1,16 @@
- [Activity]
+@@ -2,7 +2,15 @@
  name = NimGame
--activity_version = 3
-+activity_version = 1
+ activity_version = 3
  bundle_id = org.sugarlabs.NimGame
 +release_date = 2024-02-16
  exec = sugar-activity3 Nimactivity.Nimgame
@@ -21,3 +19,4 @@ index b44f2aa..1a016b2 100644
 +update_contact = https://github.com/SudoSu-bham
 +developer_name = SudoSu-bham
 \ No newline at end of file
+
