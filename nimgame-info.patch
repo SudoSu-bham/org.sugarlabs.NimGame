@@ -16,7 +16,7 @@ index b44f2aa..dc17061 100644
 +description = The Game of Nim is a two-player mathematical game of strategy. Players take turns removing objects from the heaps according to specific rules. The objective of the game is to avoid being the player to take the last object. 
 +url = https://github.com/SudoSu-bham/NimGame.git
 +tags = Education
-+update_contact = https://github.com/SudoSu-bham
-+developer_name = SudoSu-bham
++update_contact = shubhamtiwari71488@gmail.com
++developer_name = Shubham Tiwari
 \ No newline at end of file
 
