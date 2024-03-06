@@ -9,7 +9,7 @@ To know more refer https://github.com/SudoSu-bham/NimGame
 To build this run the following command in terminal
 
 ```bash
-https://github.com/SudoSu-bham/org.sugarlabs.NimGame.git
+git clone https://github.com/SudoSu-bham/org.sugarlabs.NimGame.git
 cd org.sugarlabs.NimGame
 flatpak -y --user install org.gnome.{Platform,Sdk}//44
 flatpak-builder --user --force-clean --install build org.sugarlabs.NimGame.json
