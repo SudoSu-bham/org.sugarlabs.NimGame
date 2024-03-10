@@ -17,16 +17,40 @@
     ],
     "modules": [
         {
-            "name": "pip",
+            "name": "pygame2",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://files.pythonhosted.org/packages/c6/aa/2c0c867d6cff00966cfc2152b25f61599f87e88b239e4dcb8ad5357f0f69/pygame-2.5.2.tar.gz",
+                    "sha256": "c1b89eb5d539e7ac5cf75513125fb5f2f0a2d918b1fd6e981f23bf0ac1b1c24a",
+                    "x-checker-data": {
+                        "type": "pypi",
+                        "name": "pygame"
+                    }
+                }
+            ],
             "buildsystem": "simple",
-            "build-options": {
-                "build-args": [
-                  "--share=network"
-                ]
-            },
             "build-commands": [
-                "pip install pygame --prefix=${FLATPAK_DEST}"
-            ]
+                "pip3 install --ignore-installed --no-deps --prefix=/app ."
+            ],
+            "build-options": {
+                "env": {
+                    "PORTMIDI_INC_PORTTIME": "1",
+                    "PYGAME_EXTRA_BASE": "/app"
+                },
+                "arch": {
+                    "aarch64": {
+                        "env": {
+                            "ORIGLIBDIRS": "/lib:/lib64:/lib/aarch64-linux-gnu"
+                        }
+                    },
+                    "x86_64": {
+                        "env": {
+                            "ORIGLIBDIRS": "/lib:/lib64:/lib/x86_64-linux-gnu"
+                        }
+                    }
+                }
+            }
         },
         {
             "name": "nim-game",
